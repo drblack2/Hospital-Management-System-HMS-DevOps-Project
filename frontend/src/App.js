@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { ThemeProvider, ThemeContext } from './ThemeContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -17,6 +17,7 @@ import './App.css';
 function AppContent() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function AppContent() {
       setIsAuthenticated(true);
       setUser(JSON.parse(userData));
     }
+    setIsAuthChecking(false);
     
     // Apply dark mode class to html element
     if (isDarkMode) {
@@ -57,10 +59,10 @@ function AppContent() {
         <div className="navbar-menu">
           {showLogout && (
             <>
-              <a href="/dashboard" className="nav-link">Dashboard</a>
-              <a href="/patients" className="nav-link">Patients</a>
-              <a href="/appointments" className="nav-link">Appointments</a>
-              <a href="/payments" className="nav-link">💳 Payments</a>
+              <Link to="/dashboard" className="nav-link">Dashboard</Link>
+              <Link to="/patients" className="nav-link">Patients</Link>
+              <Link to="/appointments" className="nav-link">Appointments</Link>
+              <Link to="/payments" className="nav-link">💳 Payments</Link>
               <span>{user?.firstName} {user?.lastName}</span>
               <button className="theme-toggle" onClick={toggleDarkMode} title="Toggle theme">
                 {isDarkMode ? '☀️' : '🌙'}
@@ -77,6 +79,10 @@ function AppContent() {
       </nav>
     );
   };
+
+  if (isAuthChecking) {
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', fontSize: '1.2rem', color: 'var(--text)' }}>Loading...</div>;
+  }
 
   return (
     <Router>
