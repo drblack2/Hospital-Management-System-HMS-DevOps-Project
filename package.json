@@ -1,0 +1,16 @@
+{
+  "name": "hospital-management-system",
+  "version": "1.0.0",
+  "description": "Full-stack hospital patient management system",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start-backend": "cd backend && npm start",
+    "start-frontend": "cd frontend && npm start",
+    "dev-backend": "cd backend && npm run dev",
+    "build-frontend": "cd frontend && npm run build"
+  },
+  "keywords": ["hospital", "management", "patient", "react", "express"],
+  "author": "",
+  "license": "ISC"
+}
