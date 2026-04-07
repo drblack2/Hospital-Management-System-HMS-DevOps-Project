@@ -1,0 +1,60 @@
+/* Layout Styles */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition-base) ease-in-out;
+  overflow-y: auto;
+}
+
+.app-layout.sidebar-collapsed .main-content {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+.content-wrapper {
+  padding: var(--spacing-8);
+  flex: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .content-wrapper {
+    padding: var(--spacing-6);
+    padding-top: calc(var(--spacing-6) + 50px);
+  }
+}
+
+/* Scrollbar Styling */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}

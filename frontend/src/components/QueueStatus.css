@@ -1,0 +1,240 @@
+/* Queue Status Styles */
+
+.queue-status-container {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.queue-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-6);
+  margin-top: 0;
+}
+
+/* Section */
+.queue-section {
+  margin-bottom: var(--spacing-6);
+}
+
+.queue-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-3);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 2px solid var(--border);
+}
+
+.section-header svg {
+  color: var(--primary);
+}
+
+/* Current Patient */
+.current-patient {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.02));
+  border: 2px solid var(--success);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.patient-info {
+  flex: 1;
+}
+
+.patient-name {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.patient-details {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.patient-doctor {
+  color: var(--text-secondary);
+}
+
+.patient-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.status-badge.in-progress {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+/* Queue List */
+.queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.queue-item:hover {
+  background-color: var(--bg-tertiary);
+  transform: translateX(4px);
+}
+
+.queue-position {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.queue-info {
+  flex: 1;
+}
+
+.queue-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-1);
+  font-size: var(--font-size-base);
+}
+
+.queue-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.badge-small {
+  display: inline-block;
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--primary);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+}
+
+.queue-time {
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* Completed List */
+.completed-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.completed-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--success);
+}
+
+.completed-name {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.completed-time {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+/* Queue Stats */
+.queue-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-3);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  text-align: center;
+}
+
+.stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .queue-status-container {
+    padding: var(--spacing-4);
+  }
+
+  .current-patient {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .queue-item {
+    gap: var(--spacing-2);
+  }
+}

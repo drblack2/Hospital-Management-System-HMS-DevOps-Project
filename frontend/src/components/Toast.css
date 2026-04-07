@@ -1,0 +1,18 @@
+/* Toast Notification Styles */
+
+.toast-info {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+/* Override default toast styles */
+:global(.react-hot-toast) {
+  background: var(--bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+:global(.react-hot-toast .react-hot-toast-icon) {
+  padding-right: var(--spacing-3);
+}
