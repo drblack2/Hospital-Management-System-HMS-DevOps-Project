@@ -35,9 +35,19 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
       
+      - name: Determine Dockerfile path
+        id: dockerfile
+        run: |
+          if [ "${{ matrix.service }}" = "backend" ]; then
+            echo "path=./backend/dockerfile" >> $GITHUB_OUTPUT
+          else
+            echo "path=./frontend/Dockerfile" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
+      
       - name: Build and test ${{ matrix.service }} image
         run: |
-          docker build -f ${{ matrix.service }}/dockerfile -t hospital-${{ matrix.service }}:test .${{ matrix.service }}
+          docker build -f ${{ steps.dockerfile.outputs.path }} -t hospital-${{ matrix.service }}:test ./${{ matrix.service }}
       
       - name: Run basic health check (Backend)
         if: matrix.service == 'backend'
@@ -61,7 +71,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./${{ matrix.service }}
-          file: ./${{ matrix.service }}/dockerfile
+          file: ${{ steps.dockerfile.outputs.path }}
           push: ${{ github.event_name == 'push' && secrets.DOCKER_HUB_USERNAME != '' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
